@@ -4,6 +4,8 @@ public interface Salary {
     public double calculateSalary();
 }
 
+
+
 //http://www.newthinktank.com/2012/08/strategy-design-pattern-tutorial/
 //class ForkliftDriverSalary implements Salary {
 //    @Override
