@@ -1,19 +1,20 @@
 package client;
 
 import database.PatientDB;
-import facade.HealthCareFacade;
+import facade.HealthcareFacade;
 import model.Patient;
 import model.Prescription;
 
 public class PharmacyClient {
-    HealthCareFacade healthCareFacade;
+
+    private HealthcareFacade facade;
     private String secToken = "pharmacyToken";
 
-    public PharmacyClient(HealthCareFacade facade) {
-        this.healthCareFacade = facade;
+    public PharmacyClient(HealthcareFacade facade) {
+        this.facade = facade;
     }
 
-    public void runSimulation() {
+    public void runSimulation(){
 
         System.out.println("Simulation for Pharmacy client:\n");
         fillPrescription("T. Turner");
@@ -21,8 +22,9 @@ public class PharmacyClient {
 
 
     }
+
     private void fillPrescription(String patientName) {
         System.out.println("Filling prescriptions for " + patientName);
-        System.out.println(healthCareFacade.fillPrescription(patientName, secToken));
+        System.out.println(facade.fillPrescription(patientName, secToken));
     }
 }

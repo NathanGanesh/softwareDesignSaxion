@@ -3,7 +3,7 @@ package client;
 import database.PatientDB;
 import database.PhysicianDB;
 import database.RoomDB;
-import facade.HealthCareFacade;
+import facade.HealthcareFacade;
 import model.Appointment;
 import model.Patient;
 import model.Physician;
@@ -13,12 +13,15 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 public class OfficeClient {
-    HealthCareFacade healthCareFacade;
+
+
+    private HealthcareFacade facade;
     private String secToken = "officeToken";
 
-    public OfficeClient(HealthCareFacade healthCareFacade) {
-        this.healthCareFacade = healthCareFacade;
+    public OfficeClient(HealthcareFacade facade) {
+        this.facade = facade;
     }
+
 
     public void runSimulation() {
         System.out.println("Simulation for Office client:\n");
@@ -39,22 +42,18 @@ public class OfficeClient {
         System.out.println("=======================================================\n");
     }
 
-
     private void createAppointment(String physName, String patName, LocalDateTime appointmentTime, String roomNr) {
-        healthCareFacade.createAppointment(physName,patName,appointmentTime,roomNr, secToken);
+        facade.createAppointment(physName,patName,appointmentTime,roomNr, secToken);
     }
 
     private void viewPhysicianAppointments(String physName) {
         System.out.println("Appointments for " + physName);
-        System.out.println(healthCareFacade.viewPhysicianAppointments(physName, secToken));
+        System.out.println(facade.viewPhysicianAppointments(physName, secToken));
     }
 
     private void viewPatientAppointments(String patientName) {
         System.out.println("Appointments for " + patientName);
-        healthCareFacade.viewPatientAppointments(patientName, secToken);
+        facade.viewPatientAppointments(patientName, secToken);
     }
-
-
-
 
 }
